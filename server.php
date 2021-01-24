@@ -25,25 +25,27 @@ $http->on('shutdown', function ($server) {
 });
 
 $http->on("request", function ($request, $response) {
-    try {
-        $client = new Predis\Client([
-            'host' => '127.0.0.1',
-            'port' => 6379
-        ]);
-
-        $count = $client->GET('count');
-        if (!$count)
-        {
-            $count = 1;
-        }
-        $client->SET('count', $count + 1);
-
-        $response->end($count);
-        echo $request->rawContent();
-    } catch (Error $e) {
-        $response->end($e);
-        echo $e;
-    }
+//    try {
+//        $client = new Predis\Client([
+//            'host' => '127.0.0.1',
+//            'port' => 6379
+//        ]);
+//
+//        $count = $client->GET('count');
+//        if (!$count)
+//        {
+//            $count = 1;
+//        }
+//        $client->SET('count', $count + 1);
+//
+//        $response->end($count);
+//        echo $request->rawContent();
+//    } catch (Error $e) {
+//        $response->end($e);
+//        echo $e;
+//    }
+    $response->end(123);
+    echo $request->rawContent();
 });
 
 $http->start();
